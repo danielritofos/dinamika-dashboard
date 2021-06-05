@@ -23,15 +23,6 @@
       <div class="navbar-inner">
         <div class="collapse navbar-collapse" id="sidenav-collapse-main">
           <ul class="navbar-nav">
-            <!-- <li class="nav-item d-lg-none">
-              <div class="pr-3 sidenav-toggler" data-action="sidenav-pin" data-target="#sidenav-main">
-                <div class="sidenav-toggler-inner">
-                  <i class="sidenav-toggler-line"></i>
-                  <i class="sidenav-toggler-line"></i>
-                  <i class="sidenav-toggler-line"></i>
-                </div>
-              </div>
-            </li> -->
             <li class="nav-item">
               <a class="nav-link active" href="index.html">
                 <i class="fas fa-home"></i>
@@ -96,6 +87,15 @@
             </button>
           </form>
           <ul class="navbar-nav align-items-center ml-md-auto">
+            <li class="nav-item d-xl-none">
+              <div class="pr-3 sidenav-toggler" data-action="sidenav-toggle" data-target="#sidenav-main">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line" style="background-color: #525f7f"></i>
+                  <i class="sidenav-toggler-line" style="background-color: #525f7f"></i>
+                  <i class="sidenav-toggler-line" style="background-color: #525f7f"></i>
+                </div>
+              </div>
+            </li>
             <li class="nav-item d-sm-none">
               <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
                 <i class="fas fa-link"></i>
@@ -222,13 +222,13 @@
               <div class="dropdown-menu dropdown-menu-lg dropdown-menu-light dropdown-menu-right ">
                 <div class="row shortcuts px-4 align-items-center">
                   <span href="#" class="col-6 shortcut-item mb-2 mb-2 mt-1 font-weight-bold">94.12 DNK</span>
-                  <a href="#!" type="button" data-toggle="modal" data-target="#open-package" class="col-6 shortcut-item mb-2 mt-1">
+                  <a href="#!" class="col-6 shortcut-item mb-2 mt-1" type="button" data-toggle="modal" data-target="#open-package">
                     <span class="shortcut-media">
                       <i class="fas fa-shopping-bag"></i>
                     </span>
                     <small>Открыть вклад</small>
                   </a>
-                  <a href="#!" class="col-6 shortcut-item mb-2 mt-1">
+                  <a href="#!" class="col-6 shortcut-item mb-2 mt-1" type="button" data-toggle="modal" data-target="#modal-topup">
                     <span class="shortcut-media">
                       <i class="fas fa-cart-arrow-down"></i>
                     </span>
@@ -313,15 +313,6 @@
                 </a>
               </div>
             </li>
-            <li class="nav-item d-xl-none ml-2">
-              <div class="pr-3 sidenav-toggler" data-action="sidenav-toggle" data-target="#sidenav-main">
-                <div class="sidenav-toggler-inner">
-                  <i class="sidenav-toggler-line"></i>
-                  <i class="sidenav-toggler-line"></i>
-                  <i class="sidenav-toggler-line"></i>
-                </div>
-              </div>
-            </li>
           </ul>
         </div>
       </div>
@@ -331,11 +322,15 @@
         <div class="header-body">
           <div class="row align-items-center py-4">
             <div class="col-12 text-right">
-              <a href="#" class="btn btn-sm btn-neutral">
+              <a href="#" class="btn btn-sm btn-danger mt-1 mb-1" type="button" data-toggle="modal" data-target="#modal-topup">
+                <span class="btn-inner--icon"><i class="fas fa-cart-arrow-down"></i></i></i></span>
+                <span>Пополнить баланс</span>
+              </a>
+              <a href="#" class="btn btn-sm btn-neutral mt-1 mb-1">
                 <span class="btn-inner--icon"><i class="fas fa-chart-area"></i></i></span>
                 <span>Детали</span>
               </a>
-              <a href="#" class="btn btn-sm btn-neutral" type="button" data-toggle="modal" data-target="#modal-default">
+              <a href="#" class="btn btn-sm btn-neutral mt-1 mb-1" type="button" data-toggle="modal" data-target="#modal-default">
                 <span class="btn-inner--icon"><i class="fas fa-info"></i></span>
                 <span>Справка</span>
               </a>
@@ -1515,6 +1510,59 @@
       </div>
     </div>
   </div>
+
+  <!-- Всплывающее окно для Пополнения счета -->
+  <div class="modal fade" id="modal-topup" tabindex="-1" role="dialog" aria-labelledby="modal-topup" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title" id="modal-title-default">Пополнение счёта</h6>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="#" class="container">
+            <p class="row">Введите сумму пополнения (USD или DNK)</p>
+            <div class="form-group mb-0 row">
+              <div class="input-group input-group-alternative input-group-merge col-sm-5 m-0">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                </div>
+                <input type="number" step="0.1" class="form-control" placeholder="Сумма USD">
+              </div>
+              <span class="col-sm-2 d-flex align-items-center justify-content-center mt-2 mb-2"><i class="fas fa-exchange-alt"></i></span>
+              <div class="input-group input-group-alternative input-group-merge col-sm-5 m-0">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-coins"></i></span>
+                </div>
+                <input type="number" step="0.1" class="form-control" placeholder="Сумма DNK">
+              </div>
+            </div>
+            <p class="mt-5 row">Выберите платёжную систему</p>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="customRadioInline1" name="paymentmethod_topup" value="hotpay" class="custom-control-input">
+              <label class="custom-control-label" for="customRadioInline1">HotPay</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="customRadioInline2" name="paymentmethod_topup" value="elchange" class="custom-control-input">
+              <label class="custom-control-label" for="customRadioInline2">El-change</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="customRadioInline3" name="paymentmethod_topup" value="montenex" class="custom-control-input">
+              <label class="custom-control-label" for="customRadioInline3">Montenex</label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link text-left p-0 m-0 text-default">Инструкция</button>
+          <button type="button" class="btn ml-auto btn-default" data-dismiss="modal">Пополнить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
