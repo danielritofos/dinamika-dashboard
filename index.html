@@ -234,7 +234,7 @@
                     </span>
                     <small>Пополнить</small>
                   </a>
-                  <a href="#!" class="col-6 shortcut-item mb-2 mt-1">
+                  <a href="#!" class="col-6 shortcut-item mb-2 mt-1" type="button" data-toggle="modal" data-target="#modal-withdraw">
                     <span class="shortcut-media">
                       <i class="far fa-credit-card"></i>
                     </span>
@@ -323,11 +323,15 @@
           <div class="row align-items-center py-4">
             <div class="col-12 text-right">
               <a href="#" class="btn btn-sm btn-danger mt-1 mb-1" type="button" data-toggle="modal" data-target="#modal-topup">
-                <span class="btn-inner--icon"><i class="fas fa-cart-arrow-down"></i></i></i></span>
+                <span class="btn-inner--icon"><i class="fas fa-cart-arrow-down"></i></span>
                 <span>Пополнить баланс</span>
               </a>
+              <a href="#" class="btn btn-sm btn-neutral mt-1 mb-1" type="button" data-toggle="modal" data-target="#modal-withdraw">
+                <span class="btn-inner--icon"><i class="fas fa-credit-card"></i></span>
+                <span>Вывести с баланса</span>
+              </a>
               <a href="#" class="btn btn-sm btn-neutral mt-1 mb-1">
-                <span class="btn-inner--icon"><i class="fas fa-chart-area"></i></i></span>
+                <span class="btn-inner--icon"><i class="fas fa-chart-area"></i></span>
                 <span>Детали</span>
               </a>
               <a href="#" class="btn btn-sm btn-neutral mt-1 mb-1" type="button" data-toggle="modal" data-target="#modal-default">
@@ -1516,7 +1520,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h6 class="modal-title" id="modal-title-default">Пополнение счёта</h6>
+          <h6 class="modal-title" id="modal-title-default">Пополнение баланса DNK</h6>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
@@ -1553,6 +1557,96 @@
               <label class="custom-control-label" for="customRadioInline3">Montenex</label>
             </div>
           </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link text-left p-0 m-0 text-default">Инструкция</button>
+          <button type="button" class="btn ml-auto btn-default" data-dismiss="modal">Пополнить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Всплывающее окно для Вывод счета -->
+  <div class="modal fade" id="modal-withdraw" tabindex="-1" role="dialog" aria-labelledby="modal-withdraw" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title" id="modal-title-default">Вывод с баланса DNK</h6>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="#" class="container">
+            <p class="row">Введите сумму вывода (USD или DNK)</p>
+            <div class="form-group mb-0 row">
+              <div class="input-group input-group-alternative input-group-merge col-sm-5 m-0">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                </div>
+                <input type="number" step="0.1" class="form-control" placeholder="Сумма USD">
+              </div>
+              <span class="col-sm-2 d-flex align-items-center justify-content-center mt-2 mb-2"><i class="fas fa-exchange-alt"></i></span>
+              <div class="input-group input-group-alternative input-group-merge col-sm-5 m-0">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-coins"></i></span>
+                </div>
+                <input type="number" step="0.1" class="form-control" placeholder="Сумма DNK">
+              </div>
+            </div>
+          </form>
+          <div class="container">
+            <p class="mt-5 row">Выберите платёжную систему</p>
+          </div>
+          <div class="nav-wrapper">
+            <ul class="nav nav-pills nav-fill d-flex justify-content-between" id="tabs-withdraw-methods" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link mb-sm-3 mb-md-0 pl-0 active" id="tabs-withdraw-methods-1-tab" data-toggle="tab" href="#tabs-withdraw-methods-1" role="tab" aria-controls="tabs-withdraw-methods-1" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>Swift</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mb-sm-3 mb-md-0 pl-0 text-muted" style="pointer-events: none; cursor: not-allowed" id="tabs-withdraw-methods-2-tab" data-toggle="tab" href="#tabs-withdraw-methods-2" role="tab" aria-controls="tabs-withdraw-methods-2" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>Visa/MasterCard</a>
+              </li>
+            </ul>
+          </div>
+          <div class="card shadow">
+            <div class="card-body">
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="tabs-withdraw-methods-1" role="tabpanel" aria-labelledby="tabs-withdraw-methods-1-tab">
+                  <form action="#" class="container">
+                    <div class="form-group mb-0 row">
+                      <div class="input-group input-group-alternative input-group-merge col-12 mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-university"></i></span>
+                        </div>
+                        <input type="text" step="0.1" class="form-control" placeholder="Bank Name">
+                      </div>
+                      <div class="input-group input-group-alternative input-group-merge col-12 mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
+                        </div>
+                        <input type="text" step="0.1" class="form-control" placeholder="Account Name">
+                      </div>
+                      <div class="input-group input-group-alternative input-group-merge col-12 mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                        </div>
+                        <input type="text" step="0.1" class="form-control" placeholder="Account Number">
+                      </div>
+                      <div class="input-group input-group-alternative input-group-merge col-12 mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fab fa-swift"></i></span>
+                        </div>
+                        <input type="text" step="0.1" class="form-control" placeholder="Swift Code">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="tab-pane fade" id="tabs-withdraw-methods-2" role="tabpanel" aria-labelledby="tabs-withdraw-methods-2-tab">
+                  <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. In, harum!</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-link text-left p-0 m-0 text-default">Инструкция</button>
